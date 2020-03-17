@@ -5,7 +5,7 @@
 - `hogan/module/content_grid/linklist/image_size/constraints`
 - `hogan/module/image/image_size/preview_size`, default is `thumbnail`
 - `hogan/module/image/image_size/library`, default is `all`
-- `hogan/module/content_grid/linklist/image/args`, default is:
+- `hogan/module/content_grid/linklist/image/args`, same as the args for `wp_get_attachment_image`, default is:
 	```php
 	[
 		'size' => 'medium',
