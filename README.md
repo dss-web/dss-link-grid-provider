@@ -1,5 +1,7 @@
 # Link list provider for [Hogan Content Grid](https://github.com/DekodeInteraktiv/hogan-content-grid)
 
+<img src="assets/add-content.png">
+
 ## Hooks
 
 - `hogan/module/content_grid/linklist/image_size/constraints`
