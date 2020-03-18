@@ -1,14 +1,13 @@
 <?php
 /**
- * Standard Provider template
+ * Link List Provider template
  *
- * $this is an instance of the Content Grid Standard Provider object.
+ * $this is an instance of the Content Grid Link List Provider object.
  *
  * Available properties:
  * $this->image (array|null) Image.
  * $this->title (string|null) Title
- * $this->text (string|null) Text content / Description
- * $this->call_to_action (array|null)  Call to action link.
+ * $this->links (array|null) Links, []['title' = 'The title', 'url  = 'https://example.com', 'target' = empty|'_blank']
  *
  * @package Hogan
  */
@@ -22,13 +21,11 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof \Dekode\Hogan\Content_Grid_P
 }
 
 if ( ! empty( $this->image ) ) {
-
-
-	// printf( '<figure class="%s">',
-	// 	esc_attr( hogan_classnames(
-	// 		apply_filters( 'hogan/module/content_grid/standard/image/figure_classes', [], $this )
-	// 	) )
-	// );
+	printf( '<figure class="%s">',
+		esc_attr( hogan_classnames(
+			apply_filters( 'hogan/module/content_grid/linklist/image/figure_classes', [], $this )
+		) )
+	);
 
 	echo wp_get_attachment_image(
 		$this->image['id'],
@@ -37,7 +34,7 @@ if ( ! empty( $this->image ) ) {
 		$this->image['attr']
 	);
 
-	// echo '</figure>';
+	echo '</figure>';
 }
 
 if ( ! empty( $this->label ) ) {
@@ -54,14 +51,6 @@ if ( ! empty( $this->links ) ) {
 	write_log( $this->links );
 	echo '<ul>';
 	foreach ( $this->links as $links ) {
-		/*
-		[link] => Array
-			(
-				[title] => PAST
-				[url] => http://media.local/eventer/dss-wp-event/past/
-				[target] =>
-			)
-		*/
 		printf( '<li><a href="%s" %s>%s</a></li>',
 			$links['link']['url'],
 			( ! empty( $links['link']['target'] ) ) ? sprintf( 'target=%s',$links['link']['target'] ) : '',
@@ -71,32 +60,8 @@ if ( ! empty( $this->links ) ) {
 	echo '</ul>';
 }
 
-
 if ( ! empty( $this->call_to_action ) ) {
 	echo '<div>';
 	hogan_component( 'button', $this->call_to_action );
 	echo '</div>';
 }
-
-
-//phpcs:disable
-if ( ! function_exists( 'write_log' ) ) {
-	/**
-	* Utility function for logging arbitrary variables to the error log.
-	*
-	* Set the constant WP_DEBUG to true and the constant WP_DEBUG_LOG to true to log to wp-content/debug.log.
-	* You can view the log in realtime in your terminal by executing `tail -f debug.log` and Ctrl+C to stop.
-	*
-	* @param mixed $log Whatever to log.
-	*/
-	function write_log( $log ) {
-		if ( true === WP_DEBUG ) {
-			if ( is_scalar( $log ) ) {
-				error_log( $log );
-			} else {
-				error_log( print_r( $log, true ) );
-			}
-		}
-	}
-}
-//phpcs:enable

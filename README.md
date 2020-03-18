@@ -15,3 +15,5 @@
 		'attr' => [],
 	]
 	```
+- `hogan/module/content_grid/linklist/image/figure_classes`, default is `[]`
+- `hogan/module/content_grid/linklist/label/enabled`, default is `false`
