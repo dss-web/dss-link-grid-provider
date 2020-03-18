@@ -48,7 +48,6 @@ if ( ! empty( $this->title ) ) {
 }
 
 if ( ! empty( $this->links ) ) {
-	write_log( $this->links );
 	echo '<ul>';
 	foreach ( $this->links as $links ) {
 		printf( '<li><a href="%s" %s>%s</a></li>',

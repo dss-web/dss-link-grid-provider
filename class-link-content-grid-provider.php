@@ -59,7 +59,6 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 	 * @return string Provider identifier
 	 */
 	public function get_identifier() : string {
-		write_log('get_identifier');
 		return 'linklist';
 	}
 
@@ -138,21 +137,10 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 			'label' => __('Title', 'dss-link-grid-provider'),
 
 		];
-
-		/*
-		 * Text field.
-		 */
-		// $fields[] = [
-		// 	'type'      => 'textarea',
-		// 	'key'       => $field_key . '_text',
-		// 	'name'      => 'text',
-		// 	'label'     => __( 'Add Text', 'dss-link-grid-provider' ),
-		// 	'rows'      => 4,
-		// 	'new_lines' => '',
-		// ];
+;
 
 		$fields[] = [
-			'key'          => $this->field_key . '_links',
+			'key'          => $field_key . '_links',
 			'label'        => 'Links',
 			'name'         => 'links',
 			'type'         => 'repeater',
@@ -161,7 +149,7 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 			'button_label' => esc_html__('New link', 'hogan-linklist'),
 			'sub_fields'   => [
 				[
-					'key'           => $this->field_key . '_link',
+					'key'           => $field_key . '_link',
 					'label'         => esc_html__('Set link and text', 'hogan-linklist'),
 					'name'          => 'link',
 					'type'          => 'link',

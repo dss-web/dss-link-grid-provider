@@ -32,10 +32,8 @@ add_filter( 'hogan/module/content_grid/template/linklist', function ($template_p
 }, 10, 2 );
 
 function register_link_content_grid_provider( \Dekode\Hogan\Content_Grid $module ) {
-	write_log('register_link_content_grid_provider');
 	require_once 'class-link-content-grid-provider.php';
 	if ( class_exists('\DSS\Hogan\Grid\Link_Content_Grid_Provider') ) {
-		write_log('Link_Content_Grid_Provider');
 		$module->register_content_grid_provider(new \DSS\Hogan\Grid\Link_Content_Grid_Provider());
 	}
 }
