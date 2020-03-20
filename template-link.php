@@ -16,15 +16,18 @@ declare( strict_types = 1 );
 
 namespace DSS\Hogan;
 
-if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof \Dekode\Hogan\Content_Grid_Provider ) ) {
+if ( ! defined('ABSPATH') || ! ( $this instanceof \Dekode\Hogan\Content_Grid_Provider ) ) {
 	return; // Exit if accessed directly.
 }
 
-if ( ! empty( $this->image ) ) {
-	printf( '<figure class="%s">',
-		esc_attr( hogan_classnames(
-			apply_filters( 'hogan/module/content_grid/linklist/image/figure_classes', [], $this )
-		) )
+if ( ! empty($this->image) ) {
+	printf(
+		'<figure class="%s">',
+		esc_attr(
+			hogan_classnames(
+				apply_filters('hogan/module/content_grid/linklist/image/figure_classes', [], $this)
+			)
+		)
 	);
 
 	echo wp_get_attachment_image(
@@ -37,30 +40,33 @@ if ( ! empty( $this->image ) ) {
 	echo '</figure>';
 }
 
-if ( ! empty( $this->label ) ) {
-	echo '<span>' . esc_textarea( $this->label ) . '</span>';
+if ( ! empty($this->label) ) {
+	echo '<span>' . esc_textarea($this->label) . '</span>';
 }
 
-if ( ! empty( $this->title ) ) {
-	hogan_component( 'heading', [
-		'title' => $this->title,
-	] );
+if ( ! empty($this->title) ) {
+	hogan_component(
+		'heading', [
+			'title' => $this->title,
+		]
+	);
 }
 
-if ( ! empty( $this->links ) ) {
-	echo '<ul>';
+if ( ! empty($this->links) ) {
+	67767   echo '<ul>';
 	foreach ( $this->links as $links ) {
-		printf( '<li><a href="%s" %s>%s</a></li>',
+		printf(
+			'<li><a href="%s" %s>%s</a></li>',
 			$links['link']['url'],
-			( ! empty( $links['link']['target'] ) ) ? sprintf( 'target=%s',$links['link']['target'] ) : '',
+			( ! empty($links['link']['target']) ) ? sprintf('target=%s', $links['link']['target']) : '',
 			$links['link']['title']
 		);
 	}
 	echo '</ul>';
 }
 
-if ( ! empty( $this->call_to_action ) ) {
+if ( ! empty($this->call_to_action) ) {
 	echo '<div>';
-	hogan_component( 'button', $this->call_to_action );
+	hogan_component('button', $this->call_to_action);
 	echo '</div>';
 }

@@ -14,7 +14,7 @@ if ( ! \class_exists('\\Dekode\\Hogan\\Base_Content_Grid_Provider') || ! \interf
 }
 
 /**
- * Text Content Grid Provider class for Hogan Content Grid
+ * Link Content Grid Provider class for Hogan Content Grid
  */
 class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provider implements \Dekode\Hogan\Content_Grid_Provider {
 
@@ -40,18 +40,11 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 	public $title;
 
 	/**
-	 * Column text content
+	 * Repeater links content
 	 *
-	 * @var string $text
+	 * @var array $text
 	 */
-	public $text;
-
-	/**
-	 * Call to action link.
-	 *
-	 * @var array|null $call_to_action
-	 */
-	public $call_to_action;
+	public $links;
 
 	/**
 	 * Get provider identifier, i.e. "text"
@@ -137,7 +130,6 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 			'label' => __('Title', 'dss-link-grid-provider'),
 
 		];
-;
 
 		$fields[] = [
 			'key'          => $field_key . '_links',
@@ -189,7 +181,6 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 			$image['id'] = $raw_content['image_id'];
 			$this->image = $image;
 		}
-
 
 		return parent::render_template();
 	}
