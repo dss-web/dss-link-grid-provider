@@ -160,17 +160,6 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 
 		];
 
-		/*
-		 * Link field
-		 */
-		// $fields[] = [
-		// 	'type'          => 'link',
-		// 	'key'           => $field_key . '_cta',
-		// 	'label'         => __( 'Call to action', 'dss-link-grid-provider' ),
-		// 	'name'          => 'cta',
-		// 	'return_format' => 'array',
-		// ];
-
 		return $fields;
 	}
 
@@ -184,7 +173,7 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 	public function get_content_grid_html( array $raw_content ) : string {
 
 		$this->title = $raw_content['title'] ?: null;
-		$this->label = $raw_content['label'] ?? null;
+		$this->label = $raw_content['label'] ?: null;
 		$this->links = $raw_content['links'] ?: null;
 		$this->image = $raw_content['image_id'] ?: null;
 
@@ -201,14 +190,6 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 			$this->image = $image;
 		}
 
-		// Call to action button.
-		// if ( null !== $this->links ) {
-		// 	$cta              = $raw_content['cta'];
-		// 	$cta['title']     = $cta['title'] ?: __('Read more', 'dss-link-grid-provider');
-		// 	$cta['classname'] = apply_filters('hogan/module/banner/cta_css_classes', '', $this);
-
-		// 	$this->call_to_action = $cta;
-		// }
 
 		return parent::render_template();
 	}
