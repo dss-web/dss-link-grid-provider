@@ -165,7 +165,7 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 	public function get_content_grid_html( array $raw_content ) : string {
 
 		$this->title = $raw_content['title'] ?: null;
-		$this->label = $raw_content['label'] ?: null;
+		$this->label = $raw_content['label'] ?? null;
 		$this->links = $raw_content['links'] ?: null;
 		$this->image = $raw_content['image_id'] ?: null;
 
