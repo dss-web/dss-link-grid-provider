@@ -2,7 +2,7 @@
 
 <img src="assets/add-content.png">
 
-## Generated HTML
+## Generated HTML Code
 
 ```html
 <div id="module-0" class="hogan-module hogan-module-content_grid hogan-module-0">
