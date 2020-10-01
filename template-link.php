@@ -16,16 +16,17 @@ declare( strict_types = 1 );
 
 namespace DSS\Hogan;
 
-if ( ! defined('ABSPATH') || ! ( $this instanceof \Dekode\Hogan\Content_Grid_Provider ) ) {
+if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof \Dekode\Hogan\Content_Grid_Provider ) ) {
 	return; // Exit if accessed directly.
 }
 
-if ( ! empty($this->image) ) {
+if ( ! empty( $this->image ) ) {
 	printf(
-		'<figure class="%s">',
+		'<figure id="attachment_%d" class="%s">',
+		esc_attr( $this->image['id'] ),
 		esc_attr(
 			hogan_classnames(
-				apply_filters('hogan/module/content_grid/linklist/image/figure_classes', [], $this)
+				apply_filters( 'hogan/module/content_grid/linklist/image/figure_classes', [], $this )
 			)
 		)
 	);
@@ -37,14 +38,23 @@ if ( ! empty($this->image) ) {
 		$this->image['attr']
 	);
 
+	if ( function_exists( 'planck_ret' ) ) {
+		echo planck_ret(
+			'global',
+			'photo-credits',
+			array(
+				'id' => $this->image['id'],
+			)
+		);
+	}
 	echo '</figure>';
 }
 
-if ( ! empty($this->label) ) {
-	echo '<span>' . esc_textarea($this->label) . '</span>';
+if ( ! empty( $this->label ) ) {
+	echo '<span>' . esc_textarea( $this->label ) . '</span>';
 }
 
-if ( ! empty($this->title) ) {
+if ( ! empty( $this->title ) ) {
 	hogan_component(
 		'heading', [
 			'title' => $this->title,
@@ -52,21 +62,24 @@ if ( ! empty($this->title) ) {
 	);
 }
 
-if ( ! empty($this->links) ) {
+if ( ! empty( $this->links ) ) {
 	echo '<ul>';
 	foreach ( $this->links as $links ) {
+		if ( ! isset( $links['link']['target'], $links['link']['title'] ) ) {
+			continue;
+		}
 		printf(
 			'<li><a href="%s" %s>%s</a></li>',
 			$links['link']['url'],
-			( ! empty($links['link']['target']) ) ? sprintf('target=%s', $links['link']['target']) : '',
+			( ! isset( $links['link']['target'], $links['link']['title'] ) ) ? sprintf( 'target=%s', $links['link']['target'] ) : '',
 			$links['link']['title']
 		);
 	}
 	echo '</ul>';
 }
 
-if ( ! empty($this->call_to_action) ) {
+if ( ! empty( $this->call_to_action ) ) {
 	echo '<div>';
-	hogan_component('button', $this->call_to_action);
+	hogan_component( 'button', $this->call_to_action );
 	echo '</div>';
 }

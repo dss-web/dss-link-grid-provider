@@ -163,7 +163,6 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 	 * @return string Content Grid HTML
 	 */
 	public function get_content_grid_html( array $raw_content ) : string {
-
 		$this->title = $raw_content['title'] ?: null;
 		$this->label = $raw_content['label'] ?? null;
 		$this->links = $raw_content['links'] ?: null;
@@ -181,7 +180,6 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 			$image['id'] = $raw_content['image_id'];
 			$this->image = $image;
 		}
-
 		return parent::render_template();
 	}
 
