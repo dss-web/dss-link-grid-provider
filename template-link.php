@@ -38,15 +38,8 @@ if ( ! empty( $this->image ) ) {
 		$this->image['attr']
 	);
 
-	if ( function_exists( 'planck_ret' ) ) {
-		echo planck_ret(
-			'global',
-			'photo-credits',
-			array(
-				'id' => $this->image['id'],
-			)
-		);
-	}
+	echo apply_filters('hogan/module/content_grid/' . $this->get_identifier() . '/image/after_image', '', $this->image['id'] );
+
 	echo '</figure>';
 }
 

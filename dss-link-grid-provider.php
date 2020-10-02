@@ -13,7 +13,7 @@
  * Plugin URI: https://github.com/soderlind/dss-link-grid-provider
  * GitHub Plugin URI: https://github.com/soderlind/dss-link-grid-provider
  * Description: description
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Per Soderlind
  * Author URI:  https://soderlind.no
  * Text Domain: dss-link-grid-provider
