@@ -13,7 +13,7 @@
  * Plugin URI: https://github.com/soderlind/dss-link-grid-provider
  * GitHub Plugin URI: https://github.com/soderlind/dss-link-grid-provider
  * Description: description
- * Version:     1.0.1
+ * Version:     1.0.2
  * Author:      Per Soderlind
  * Author URI:  https://soderlind.no
  * Text Domain: dss-link-grid-provider
@@ -26,7 +26,7 @@ if ( ! defined('ABSPATH') ) {
 	wp_die();
 }
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\\hogan_load_link_textdomain' );
+add_action( 'plugins_loaded', __NAMESPACE__ . '\\hogan_load_link_grid_provider_textdomain' );
 
 
 add_action('hogan/module/content_grid/register_providers', __NAMESPACE__ . '\\register_link_content_grid_provider', 9);
@@ -37,7 +37,7 @@ add_filter( 'hogan/module/content_grid/template/linklist', function ($template_p
 /**
  * Register module text domain
  */
-function hogan_load_textdomain() {
+function hogan_load_link_grid_provider_textdomain() {
 	\load_plugin_textdomain( 'dss-link-grid-provider', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 

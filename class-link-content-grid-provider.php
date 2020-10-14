@@ -94,7 +94,7 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 			'type'          => 'image',
 			'key'           => $field_key . '_image_id',
 			'name'          => 'image_id',
-			'label'         => __('Add Image', 'dss-link-grid-provider'),
+			'label'         => __( 'Add Image', 'dss-link-grid-provider' ),
 			'required'      => 0,
 			'return_format' => 'id',
 			'preview_size'  => apply_filters('hogan/module/image/image_size/preview_size', 'thumbnail'), // todo: filter named wrong? Should be content_grid.
@@ -116,7 +116,7 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 				'type'  => 'text',
 				'key'   => $field_key . '_label',
 				'name'  => 'label',
-				'label' => __('Label', 'dss-link-grid-provider'),
+				'label' => __( 'Label', 'dss-link-grid-provider' ),
 			];
 		}
 
@@ -133,16 +133,16 @@ class Link_Content_Grid_Provider extends \Dekode\Hogan\Base_Content_Grid_Provide
 
 		$fields[] = [
 			'key'          => $field_key . '_links',
-			'label'        => 'Links',
+			'label'        => __( 'Links', 'dss-link-grid-provider' ),
 			'name'         => 'links',
 			'type'         => 'repeater',
 			'min'          => 1,
 			'layout'       => 'block',
-			'button_label' => esc_html__('New link', 'hogan-linklist'),
+			'button_label' => esc_html__('New link', 'dss-link-grid-provider'),
 			'sub_fields'   => [
 				[
 					'key'           => $field_key . '_link',
-					'label'         => esc_html__('Set link and text', 'hogan-linklist'),
+					'label'         => esc_html__( 'Set link and text', 'dss-link-grid-provider' ),
 					'name'          => 'link',
 					'type'          => 'link',
 					'return_format' => 'array',
