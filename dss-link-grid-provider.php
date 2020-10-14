@@ -26,11 +26,27 @@ if ( ! defined('ABSPATH') ) {
 	wp_die();
 }
 
+add_action( 'plugins_loaded', __NAMESPACE__ . '\\hogan_load_link_textdomain' );
+
+
 add_action('hogan/module/content_grid/register_providers', __NAMESPACE__ . '\\register_link_content_grid_provider', 9);
 add_filter( 'hogan/module/content_grid/template/linklist', function ($template_part, $module ) {
 	return plugin_dir_path( __FILE__ ) . 'template-link.php';
 }, 10, 2 );
 
+/**
+ * Register module text domain
+ */
+function hogan_load_textdomain() {
+	\load_plugin_textdomain( 'dss-link-grid-provider', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
+/**
+ * Register link content grid provider.
+ *
+ * @param \Dekode\Hogan\Content_Grid $module
+ * @return void
+ */
 function register_link_content_grid_provider( \Dekode\Hogan\Content_Grid $module ) {
 	require_once 'class-link-content-grid-provider.php';
 	if ( class_exists('\DSS\Hogan\Grid\Link_Content_Grid_Provider') ) {
