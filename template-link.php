@@ -44,7 +44,7 @@ if ( ! empty( $this->image ) ) {
 }
 
 if ( ! empty( $this->label ) ) {
-	echo '<span>' . esc_textarea( $this->label ) . '</span>';
+	printf( '<div class="hogan-tagline">%s</div>', esc_textarea( $this->label ) );
 }
 
 if ( ! empty( $this->title ) ) {
